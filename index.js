@@ -7,7 +7,7 @@ async function run() {
     const apikey = core.getInput('apikey');
     const endpoint = core.getInput('endpoint');
     const prompt = core.getInput('prompt');
-    const temperature = inputs.temperature;
+    const temperature = core.getInput('temperature');
     const stop = ['\n', '###'];
     const apiversion = inputs.apiversion;
     const response = await getModelResponse(endpoint, apikey, prompt, temperature, apiversion, stop);
