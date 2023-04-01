@@ -1,13 +1,29 @@
-name: 'Wait'
+name: 'anygpt'
 description: 'Complete'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  endpoint:
+    description: 'Endpoint URL'
     required: true
-    default: '1000'
+  apikey:
+    description: 'API key'
+    required: true
+  apiversion:
+    description: 'api version'
+    required: true
+  prompt:
+    description: 'Prompt to send to the model'
+    required: true
+  temperature:
+    description: 'Sampling temperature to use'
+    required: false
+    default: 0.9
+  stop:
+    description: 'Tokens to stop generation at'
+    required: false
+    default: ['\n', '###']
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  response:
+    description: 'response'
 runs:
   using: 'node16'
   main: 'dist/index.js'

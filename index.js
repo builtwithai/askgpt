@@ -1,23 +1,17 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const wait = require('./wait');
+const getModelResponse = require('./response');
 
-
-// most @actions toolkit packages have async methods
 async function run() {
   try {
-    const token = core.getInput('token');
-    core.info(`token: ${token}`);
-    const octokit = github.getOctokit(token);
-
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
-
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
-
-    core.setOutput('time', new Date().toTimeString());
+    const apikey = core.getInput('apikey');
+    const endpoint = core.getInput('endpoint');
+    const prompt = core.getInput('prompt');
+    const temperature = inputs.temperature;
+    const stop = inputs.stop;
+    const apiversion = inputs.apiversion;
+    const response = await getModelResponse(endpoint, apikey, prompt, temperature, apiversion, stop);
+    core.setOutput('response', response.data.choices[0].text);
   } catch (error) {
     core.setFailed(error.message);
   }

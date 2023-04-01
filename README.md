@@ -73,7 +73,24 @@ You can now consume the action by referencing the v1 branch
 ```yaml
 uses: devops-testbed/anygpt@v1
 with:
-  milliseconds: 1000
+  endpoint: "http://endpoint:8080"
+  apikey: "asfadweyy32723jhhjaf&&*"
+  apiversion: "1.2.3"
+  prompt: "Github workflow assistant."
 ```
+
+anygpt
+This action completes a prompt using the model API.
+
+Inputs
+endpoint
+Required The endpoint URL for the model API.
+
+api_key
+Required The API key for the model API
+
+prompt
+Required The prompt to complete.
+
 
 See the [actions tab](https://github.com/devops-testbed/anygpt/actions) for runs of this action! :rocket:

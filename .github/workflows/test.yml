@@ -19,7 +19,6 @@ jobs:
     - run: npm ci
     - run: npm test
 
-  # test action works running from the graph
   test:
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +28,10 @@ jobs:
         node-version: 16
         cache: 'npm'
     - uses: ./
+      id: generate-response
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        milliseconds: 1000
+        endpoint: ${{ secrets.ENDPOINT }}
+        apikey: ${{ secrets.KEY }}
+        apiversion: ${{ secrets.VERSION }}
+        prompt: 'create a github action haiku'
+    - run: echo ${{ steps.generate-response.outputs.response }}
