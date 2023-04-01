@@ -17,10 +17,14 @@ jobs:
         cache: 'npm'
     - uses: ./
       id: generate-response
+      env:
+        ENDPOINT: ${{ secrets.ENDPOINT }}
+        KEY: ${{ secrets.KEY }}
+        VERSION: ${{ secrets.VERSION }}
       with:
         endpoint: ${{ secrets.ENDPOINT }}
         apikey: ${{ secrets.KEY }}
-        apiversion: ${{ secrets.VERSION }}
+        apiversion: ${{ env.VERSION }}}
         prompt: 'create a github action haiku'
     - run: echo ${{ steps.generate-response.outputs.response }}
 
