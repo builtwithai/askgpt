@@ -13,10 +13,6 @@ inputs:
   prompt:
     description: 'Prompt to send to the model'
     required: true
-  temperature:
-    description: 'Sampling temperature to use'
-    required: false
-    default: 0.9
 outputs:
   response:
     description: 'response'
