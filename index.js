@@ -9,7 +9,7 @@ async function run() {
     const prompt = core.getInput('prompt');
     const temperature = core.getInput('temperature');
     const stop = ['\n', '###'];
-    const apiversion = inputs.apiversion;
+    const apiversion = core.getInput('apiversion');
     const response = await getModelResponse(endpoint, apikey, prompt, temperature, apiversion, stop);
     core.setOutput('response', response.data.choices[0].text);
   } catch (error) {
