@@ -8,7 +8,7 @@ async function run() {
     const endpoint = core.getInput('endpoint');
     const prompt = core.getInput('prompt');
     const temperature = inputs.temperature;
-    const stop = inputs.stop;
+    const stop = ['\n', '###'];
     const apiversion = inputs.apiversion;
     const response = await getModelResponse(endpoint, apikey, prompt, temperature, apiversion, stop);
     core.setOutput('response', response.data.choices[0].text);

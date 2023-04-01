@@ -17,10 +17,6 @@ inputs:
     description: 'Sampling temperature to use'
     required: false
     default: 0.9
-  stop:
-    description: 'Tokens to stop generation at'
-    required: false
-    default: ['\n', '###']
 outputs:
   response:
     description: 'response'
