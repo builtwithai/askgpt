@@ -7,7 +7,7 @@ async function main() {
     const endpoint = process.env.ENDPOINT;
     const apikey = process.env.KEY;
     const apiversion = process.env.VERSION;
-    const prompt = 'write Haiku on github actions';
+    const prompt = 'write a advantages of buying MSFT';
     const temperature = 0.9;
     const stop = ['\n', '###'];
     const response = await getModelResponse(endpoint, apikey, prompt, temperature, apiversion, stop);

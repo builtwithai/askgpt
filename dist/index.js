@@ -17852,19 +17852,23 @@ let getModelResponse = function (endpoint, apikey, prompt, temperature, apiversi
       temperature: temperature,
       n: 1,
       stream: false,
-      stop: stop
-    },{
+      stop: stop,
+      max_tokens: 4096
+    }, {
       headers: {
         'api-key': apikey,
       },
-      params: { "api-version": "2022-12-01" }
+      params: {
+        "api-version": "2022-12-01",
+        "max_tokens": 2024
+      }
     })
-    .then(response => {
-      resolve(response);
-    })
-    .catch(error => {
-      reject(error);
-    });
+      .then(response => {
+        resolve(response);
+      })
+      .catch(error => {
+        reject(error);
+      });
   });
 }
 
