@@ -71,12 +71,18 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-uses: devops-testbed/anygpt@v1
-with:
-  endpoint: "http://endpoint:8080"
-  apikey: "asfadweyy32723jhhjaf&&*"
-  apiversion: "1.2.3"
-  prompt: "Github workflow assistant."
+    - uses: devops-testbed/anygpt@v1
+      id: generate-response
+      env:
+        ENDPOINT: ${{ secrets.ENDPOINT }}
+        KEY: ${{ secrets.KEY }}
+        VERSION: ${{ secrets.VERSION }}
+      with:
+        endpoint: ${{ secrets.ENDPOINT }}
+        apikey: ${{ secrets.KEY }}
+        apiversion: ${{ env.VERSION }}
+        prompt: 'create a github action haiku'
+    - run: echo ${{ steps.generate-response.outputs.response }}
 ```
 
 anygpt
