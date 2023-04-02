@@ -18,7 +18,7 @@ let getModelResponse = function (endpoint, apikey, prompt, temperature, apiversi
       headers: {
         'api-key': apikey,
       },
-      params: { "api-version": apiversion }
+      params: { "api-version": "2022-12-01" }
     })
     .then(response => {
       resolve(response);
