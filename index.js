@@ -4,7 +4,7 @@ const getModelResponse = require('./response');
 
 async function run() {
   try {
-    const apikey = core.getInput('apikey');
+    const apiKey = core.getInput('apikey');
     const url = core.getInput('endpoint');
     const prompt = core.getInput('prompt');
     const model = core.getInput('model');
