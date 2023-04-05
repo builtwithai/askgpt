@@ -1,35 +1,47 @@
-let getModelResponse = function (endpoint, apikey, prompt, temperature, apiversion, stop) {
-  return new Promise((resolve, reject) => {
 
-    const { Configuration, OpenAIApi } = require("openai");
-    const configuration = new Configuration({
-      basePath: endpoint,
-      apiKey: apikey
+let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
+  return new Promise(async (resolve, reject) => {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
     });
-    const openai = new OpenAIApi(configuration);
 
-    openai.createCompletion({
-      prompt: prompt + stop[0],
-      temperature: temperature,
-      n: 1,
-      stream: false,
-      stop: stop,
-      max_tokens: 4096
-    }, {
-      headers: {
-        'api-key': apikey,
-      },
-      params: {
-        "api-version": "2022-12-01",
-        "max_tokens": 2024
-      }
-    })
-      .then(response => {
-        resolve(response);
-      })
-      .catch(error => {
-        reject(error);
+    const bodyData = {
+      prompt,
+      max_tokens: maxTokens,
+      temperature,
+      frequency_penalty: frequencyPenalty,
+      presence_penalty: presencePenalty,
+      top_p: topP
+    };
+
+    if (url.includes('azure.com')) {
+      headers.append('api-key', apiKey);
+      bodyData.stop = stop;
+    } else if (url.includes('openai.com')) {
+      headers.append('Authorization', `Bearer ${apiKey}`);
+      bodyData.model = model;
+    } else {
+      reject(new Error('Invalid URL.'));
+    }
+
+    const body = JSON.stringify(bodyData);
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers,
+        body
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        resolve(data);
+      } else {
+        reject(new Error(`Error: ${response.statusText}`));
+      }
+    } catch (error) {
+      reject(error);
+    }
   });
 }
 
