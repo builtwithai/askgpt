@@ -1,4 +1,6 @@
 
+const fetch = require('node-fetch');
+
 let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
   return new Promise(async (resolve, reject) => {
     const headers = new Headers({
