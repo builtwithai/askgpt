@@ -1,11 +1,11 @@
 
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
   return new Promise(async (resolve, reject) => {
-    const headers = new Headers({
+    const headers = {
       'Content-Type': 'application/json'
-    });
+    };
 
     const bodyData = {
       prompt,
@@ -17,29 +17,24 @@ let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 20
     };
 
     if (url.includes('azure.com')) {
-      headers.append('api-key', apiKey);
+      headers['api-key'] = apiKey;
       bodyData.stop = stop;
     } else if (url.includes('openai.com')) {
-      headers.append('Authorization', `Bearer ${apiKey}`);
+      headers['Authorization'] = `Bearer ${apiKey}`;
       bodyData.model = model;
     } else {
       reject(new Error('Invalid URL.'));
     }
 
     const body = JSON.stringify(bodyData);
-
+    
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers,
-        body
-      });
+      const response = await axios.post(url, bodyData, { headers });
 
-      if (response.ok) {
-        const data = await response.json();
-        resolve(data);
+      if (response.status === 200) {
+        resolve(response.data);
       } else {
-        reject(new Error(`Error: ${response.statusText}`));
+        reject(new Error(`Error: ${response.status} ${response.statusText}`));
       }
     } catch (error) {
       reject(error);

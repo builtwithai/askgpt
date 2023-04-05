@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const getModelResponse = require('./response');
+const getModelResponse = require('./response').default;
 
 async function run() {
   try {
