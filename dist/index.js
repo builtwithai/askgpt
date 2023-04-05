@@ -17546,7 +17546,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
-const getModelResponse = (__nccwpck_require__(8781)["default"]);
+const getModelResponse = __nccwpck_require__(8781);
 
 async function run() {
   try {
