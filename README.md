@@ -19,9 +19,6 @@ Run the tests :heavy_check_mark:
 $ npm test
 
  PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
 ...
 ```
 
@@ -76,11 +73,9 @@ You can now consume the action by referencing the v1 branch
       env:
         ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
-        VERSION: ${{ secrets.VERSION }}
       with:
         endpoint: ${{ secrets.ENDPOINT }}
         apikey: ${{ secrets.KEY }}
-        apiversion: ${{ env.VERSION }}
         prompt: 'create a github action haiku'
     - run: echo ${{ steps.generate-response.outputs.response }}
 ```
