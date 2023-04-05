@@ -24,7 +24,6 @@ jobs:
       with:
         endpoint: ${{ secrets.ENDPOINT }}
         apikey: ${{ secrets.KEY }}
-        apiversion: ${{ env.VERSION }}
         prompt: 'create a github action haiku'
     - run: echo ${{ steps.generate-response.outputs.response }}
 
