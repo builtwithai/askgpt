@@ -13104,7 +13104,6 @@ function wrappy (fn, cb) {
 const axios = __nccwpck_require__(8757);
 
 let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
-  console.log('url: ', url);
   return new Promise(async (resolve, reject) => {
     const headers = {
       'Content-Type': 'application/json'
@@ -13137,6 +13136,7 @@ let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 20
       if (response.status === 200) {
         resolve(response.data);
       } else {
+        console.log(response);
         reject(new Error(`Error: ${response.status} ${response.statusText}`));
       }
     } catch (error) {
