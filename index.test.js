@@ -15,7 +15,7 @@ describe('getModelResponse', () => {
     const response = await getModelResponse(url, apiKey, prompt, model, maxTokens, temperature);
     console.debug(response);
     expect(response).toBeDefined();
-  }, 20000);
+  }, 50000);
 });
 
 
