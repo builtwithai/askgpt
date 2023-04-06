@@ -15,7 +15,7 @@ async function run() {
     }
     const prompt = core.getInput('prompt');
     const model = core.getInput('model');
-    const maxTokens = parseInt(core.getInput('maxTokens'), 10);;
+    const maxTokens = parseInt(core.getInput('max_tokens'), 10);;
     const frequencyPenalty = parseInt(core.getInput('frequency_penalty'), 10);
     const presencePenalty = parseInt(core.getInput('presence_penalty'),10);
     const topP = parseInt(core.getInput('top_p'),10);
