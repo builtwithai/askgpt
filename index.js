@@ -4,8 +4,8 @@ const getModelResponse = require('./response');
 
 async function run() {
   try {
-    const apiKey = core.getInput('apikey');
-    const url = core.getInput('endpoint');
+    const url = process.env.ENDPOINT;
+    const apiKey = process.env.KEY;
     const prompt = core.getInput('prompt');
     const model = core.getInput('model');
     const maxTokens = core.getInput('maxTokens');

@@ -1,12 +1,6 @@
 name: 'anygpt'
 description: 'Complete'
 inputs:
-  endpoint:
-    description: 'Endpoint URL'
-    required: true
-  apikey:
-    description: 'API key'
-    required: true
   model:
     description: 'model'
     required: false
