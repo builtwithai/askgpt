@@ -18,7 +18,7 @@ jobs:
     - uses: ./
       id: generate-response
       env:
-        ENDPOINT: ${{ vars.URL }}
+        ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
       with:
         prompt: 'create a github action haiku'
