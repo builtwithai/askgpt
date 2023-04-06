@@ -29,6 +29,7 @@ let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 20
     const body = JSON.stringify(bodyData);
     
     try {
+      console.log(`Sending request to ${url} with body: ${body}`);
       const response = await axios.post(url, bodyData, { headers });
 
       if (response.status === 200) {
