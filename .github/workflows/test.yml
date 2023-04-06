@@ -22,7 +22,9 @@ jobs:
         KEY: ${{ secrets.KEY }}
       with:
         prompt: 'create a github action haiku'
-    - run: echo ${{ steps.generate-response.outputs.response }}
+    -  env:
+        RESPONSE: ${{ steps.generate-response.outputs.response }}
+       run: echo ${{ env.RESPONSE }}
 
   units:
     runs-on: ubuntu-latest
