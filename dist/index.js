@@ -13131,13 +13131,13 @@ let getModelResponse = function (url, apiKey, prompt, model=null, maxTokens = 20
     const body = JSON.stringify(bodyData);
     
     try {
-      console.log(`Sending request to ${url} with body: ${body}`);
+      console.debug(`Sending request to ${url} with body: ${body}`);
       const response = await axios.post(url, bodyData, { headers });
 
       if (response.status === 200) {
         resolve(response.data);
       } else {
-        console.log(response);
+        console.debug(response);
         reject(new Error(`Error: ${response.status} ${response.statusText}`));
       }
     } catch (error) {
@@ -17570,6 +17570,7 @@ async function run() {
     const temperature = parseFloat(core.getInput('temperature'));
     const stop = core.getInput('stop');
     const response = await getModelResponse(url, apiKey, prompt, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
+    core.info(JSON.stringify(response));
     core.setOutput('response', response.choices[0].text);
   } catch (error) {
     core.setFailed(error.message);

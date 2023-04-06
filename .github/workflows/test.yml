@@ -22,6 +22,7 @@ jobs:
         KEY: ${{ secrets.KEY }}
       with:
         prompt: 'create a github action haiku'
+        max_tokens: 10
     -  env:
         RESPONSE: ${{ steps.generate-response.outputs.response }}
        run: echo ${{ env.RESPONSE }}
