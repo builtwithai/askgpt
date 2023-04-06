@@ -11,7 +11,7 @@ inputs:
   max_tokens:
     description: 'Maximum number of tokens to generate'
     required: false
-    default: 2000
+    default: 200
   temperature:
     description: 'Temperature'
     required: false
