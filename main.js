@@ -1,5 +1,5 @@
 
-const getModelResponse = require('./response').default;
+const getModelResponse = require('./response');
 const dotnev = require('dotenv');
 dotnev.config();
 
