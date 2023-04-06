@@ -22,7 +22,7 @@ async function run() {
     const temperature = parseFloat(core.getInput('temperature'));
     const stop = core.getInput('stop');
     const response = await getModelResponse(url, apiKey, prompt, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
-    core.setOutput('response', response.data.choices[0].text);
+    core.setOutput('response', response.choices[0].text);
   } catch (error) {
     core.setFailed(error.message);
   }
