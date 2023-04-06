@@ -31,7 +31,7 @@ inputs:
   stop:
     description: 'Stop sequence'
     required: false
-    default: ''
+    default: '\n'
   n:
     description: 'Number of samples to return'
     required: false
