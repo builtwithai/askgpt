@@ -15,10 +15,10 @@ async function run() {
     }
     const prompt = core.getInput('prompt');
     const model = core.getInput('model');
-    const maxTokens = core.getInput('maxTokens');
-    const frequencyPenalty = core.getInput('frequencyPenalty');
-    const presencePenalty = core.getInput('presencePenalty');
-    const topP = core.getInput('topP');
+    const maxTokens = core.getInput('max_tokens');
+    const frequencyPenalty = core.getInput('frequency_penalty');
+    const presencePenalty = core.getInput('presence_penalty');
+    const topP = core.getInput('top_p');
     const temperature = core.getInput('temperature');
     const stop = core.getInput('stop');
     const response = await getModelResponse(url, apiKey, prompt, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);

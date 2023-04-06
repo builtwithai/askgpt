@@ -19,7 +19,7 @@ inputs:
   top_p:
     description: 'Top p'
     required: false
-    default: 1
+    default: '1'
   frequency_penalty:
     description: 'Frequency penalty'
     required: false
