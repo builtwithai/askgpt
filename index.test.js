@@ -10,7 +10,7 @@ describe('getModelResponse', () => {
     const prompt = 'Stock market analyst\'s analysis of ticker: MSFT Analysis:';
     const model = null;
     const temperature = 0.9;
-    const maxTokens = 500;
+    const maxTokens = 100;
     const stop = '\n';
     const response = await getModelResponse(url, apiKey, prompt, model, maxTokens, temperature);
     console.debug(response);
