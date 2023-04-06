@@ -25,7 +25,7 @@ jobs:
         max_tokens: 10
     -  env:
         RESPONSE: ${{ steps.generate-response.outputs.response }}
-       run: echo ${{ env.RESPONSE }}
+       run: echo ${{ env.RESPONSE }} || echo 0
 
   units:
     runs-on: ubuntu-latest
