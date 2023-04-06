@@ -74,8 +74,6 @@ You can now consume the action by referencing the v1 branch
         ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
       with:
-        endpoint: ${{ secrets.ENDPOINT }}
-        apikey: ${{ secrets.KEY }}
         prompt: 'create a github action haiku'
     - run: echo ${{ steps.generate-response.outputs.response }}
 ```
