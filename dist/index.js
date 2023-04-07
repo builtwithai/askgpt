@@ -17567,8 +17567,8 @@ async function run() {
     if (!apiKey || apiKey.trim() === "") {
       throw new Error("env.KEY API key is missing or empty.");
     }
-    const prompt = JSON.parse(core.getInput('prompt'));
-    core.info(`Prompt: ${prompt}`);
+    const prompts = JSON.parse(core.getInput('prompt'));
+    core.info(JSON.stringify(prompts));
     const model = core.getInput('model');
     const maxTokens = parseInt(core.getInput('max_tokens'), 10);;
     const frequencyPenalty = parseInt(core.getInput('frequency_penalty'), 10);
@@ -17577,7 +17577,7 @@ async function run() {
     const temperature = parseFloat(core.getInput('temperature'));
     const stop = core.getInput('stop');
     core.debug(`Inputs: prompt=${prompt}, model=${model}, maxTokens=${maxTokens}, frequencyPenalty=${frequencyPenalty}, presencePenalty=${presencePenalty}, topP=${topP}, temperature=${temperature}, stop=${stop}`);
-    const response = await getModelResponse(url, apiKey, prompt['prompt'],null, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
+    const response = await getModelResponse(url, apiKey, prompts['prompt'],null, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response.choices[0].text);
   } catch (error) {
