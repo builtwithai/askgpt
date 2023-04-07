@@ -1,4 +1,5 @@
-name: 'anygpt'
+name: 'multigpt'
+author: 'megamanics'
 description: 'Complete'
 inputs:
   model:
