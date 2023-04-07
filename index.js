@@ -14,7 +14,9 @@ async function run() {
       throw new Error("env.KEY API key is missing or empty.");
     }
     const prompt = core.getInput('prompt');
+    core.info(`Prompt: ${prompt}`);
     const model = core.getInput('model');
+    core.info(`Model: ${model}`);
     const maxTokens = parseInt(core.getInput('max_tokens'), 10);;
     const frequencyPenalty = parseInt(core.getInput('frequency_penalty'), 10);
     const presencePenalty = parseInt(core.getInput('presence_penalty'),10);
