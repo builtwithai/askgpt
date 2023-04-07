@@ -6,7 +6,7 @@ dotnev.config();
 async function main() {
     const url = process.env.ENDPOINT;
     const apiKey = process.env.KEY;
-    const prompt = 'Stock market analyst\'s analysis of ticker: MSFT Analysis:';
+    const prompt = {"prompt": ["what are the important things in life?", "rank the below in order of difficulty.", "pick top 3 and write it as a mardown list."]};
     const temperature = 0.5;
     const maxTokens = 1000;
     const model = null;
