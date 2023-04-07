@@ -7,12 +7,12 @@ describe('getModelResponse', () => {
   test('returns a response from the model API', async () => {
     const url = process.env.ENDPOINT;
     const apiKey = process.env.KEY;
-    const prompt = {"prompt": ["what are the important things in life?", "rank the below in order of difficulty.", "pick top 3 and write it as a mardown list."]};
+    const prompts = {"prompt": ["what are the important things in life?", "rank the below in order of difficulty.", "pick top 3 and write it as a mardown list."]};
     const model = null;
     const temperature = 0.9;
-    const maxTokens = 100;
+    const maxTokens = 10;
     const stop = '\n';
-    const response = await getModelResponse(url, apiKey, prompt, model, maxTokens, temperature);
+    const response = await getModelResponse(url, apiKey, prompts["prompt"],null, model, maxTokens, temperature);
     console.debug(response);
     expect(response).toBeDefined();
   }, 50000);

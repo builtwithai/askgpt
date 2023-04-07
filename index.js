@@ -23,7 +23,7 @@ async function run() {
     const temperature = parseFloat(core.getInput('temperature'));
     const stop = core.getInput('stop');
     core.debug(`Inputs: prompt=${prompt}, model=${model}, maxTokens=${maxTokens}, frequencyPenalty=${frequencyPenalty}, presencePenalty=${presencePenalty}, topP=${topP}, temperature=${temperature}, stop=${stop}`);
-    const response = await getModelResponse(url, apiKey, prompt['prompt'][0], model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
+    const response = await getModelResponse(url, apiKey, prompt['prompt'],null, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response.choices[0].text);
   } catch (error) {
