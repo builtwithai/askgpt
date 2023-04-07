@@ -1,7 +1,7 @@
 # AnyGPT
 
 <p align="center">
-  <a href="https://github.com/devops-testbed/anygpt/actions"><img alt="javscript-action status" src="https://github.com/devops-testbed/anygpt/workflows/units-test/badge.svg"></a>
+  <a href="https://github.com/devops-testbed/multigpt/actions"><img alt="javscript-action status" src="https://github.com/devops-testbed/multigpt/workflows/units-test/badge.svg"></a>
 </p>
 
 
@@ -46,15 +46,11 @@ git add dist
 
 Users shouldn't consume the action from master since that would be latest code and actions can break compatibility between major versions.
 
-Checkin to the v1 release branch
+Tag it
 
 ```bash
-git checkout -b v1
-git commit -a -m "v1 release"
-```
-
-```bash
-git push origin v1
+❯ git tag -fa v1 -m "Update v1 tag"
+❯ git push origin v1 --force
 ```
 
 Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
@@ -68,13 +64,13 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-    - uses: devops-testbed/anygpt@v1
+    - uses: devops-testbed/multigpt@v1
       id: generate-response
       env:
         ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
       with:
-        prompt: 'create a github action haiku'
+        prompt: '{"prompt": ["what are the important things in life", "rank in order of difficulty.", "pick top 3"]}'
     - run: echo ${{ steps.generate-response.outputs.response }}
 ```
 
