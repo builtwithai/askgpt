@@ -21,7 +21,10 @@ jobs:
         ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
       with:
-        prompt: 'create a github action haiku'
+        prompt: |
+                  'what are the important things in life?'
+                  'rank the below in order of difficulty.'
+                  'pick top 3 and write it as a mardown list.'
         max_tokens: 10
     -  env:
         RESPONSE: ${{ steps.generate-response.outputs.response }}
