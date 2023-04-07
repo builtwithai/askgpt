@@ -1,6 +1,9 @@
 name: 'multigpt'
 author: 'megamanics'
 description: 'Complete'
+branding:
+  icon: 'github'
+  color: 'grey-dark'
 inputs:
   model:
     description: 'model'
