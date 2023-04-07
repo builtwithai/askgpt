@@ -2,7 +2,7 @@ name: 'multigpt'
 author: 'megamanics'
 description: 'Complete'
 branding:
-  icon: 'github'
+  icon: 'life-buoy'
   color: 'grey-dark'
 inputs:
   model:
