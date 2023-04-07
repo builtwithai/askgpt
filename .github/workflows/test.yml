@@ -23,7 +23,7 @@ jobs:
         KEY: ${{ secrets.KEY }}
       with:
         prompt: 'what are the important things in life?'
-        max_tokens: 100
+        max_tokens: 10
     -  env:
         RESPONSE: ${{ steps.single-prompt.outputs.response }}
        run: echo ${{ env.RESPONSE }} || echo 0
