@@ -9,7 +9,7 @@ async function main() {
     const prompts = ["what are the important things in life?", "rank the below in order of difficulty.", ":summarize above list in bullet points.\n-"];
     const temperature = 0.5;
     const maxTokens = 100;
-    const model = null;
+    const model = "gpt-3.5-turbo";
     const frequencyPenalty = 0;
     const presencePenalty = 0;
     const topP = 1;

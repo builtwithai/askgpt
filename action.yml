@@ -8,7 +8,7 @@ inputs:
   model:
     description: 'model'
     required: false
-    default: null
+    default: 'gpt-3.5-turbo'
   prompt:
     description: 'Prompt to send to the model'
     required: true

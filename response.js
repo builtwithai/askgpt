@@ -2,7 +2,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 
-let getModelResponse = function (url, apiKey, prompts, response = '', model = "gpt-3.5-turbo", maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
+let getModelResponse = function (url, apiKey, prompts, response = '', model = "gpt-3.5-turbo", maxTokens = 100, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
   return new Promise(async (resolve, reject) => {
 
     const configuration = new Configuration({
@@ -24,7 +24,7 @@ let getModelResponse = function (url, apiKey, prompts, response = '', model = "g
     try {
       const resp = await openai.createChatCompletion(bodyData);
       if (resp.status === 200) {
-        const output = resp.data.choices[0].message.trim();
+        const output = resp.data.choices[0].message.content;
         console.info(`Output: ${output}`);
         if (prompts.length > 0) {
           const respnext = await getModelResponse(url, apiKey, prompts, output, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
