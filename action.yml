@@ -1,4 +1,4 @@
-name: 'multigpt'
+name: 'askgpt'
 author: 'megamanics'
 description: 'Complete'
 branding:
@@ -44,5 +44,5 @@ outputs:
   response:
     description: 'response'
 runs:
-  using: 'node16'
+  using: 'node18'
   main: 'dist/index.js'

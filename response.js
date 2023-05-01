@@ -1,15 +1,19 @@
 
-const axios = require('axios');
+const { Configuration, OpenAIApi } = require("openai");
 
-let getModelResponse = function (url, apiKey, prompts, response = '', model = null, maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
+
+let getModelResponse = function (url, apiKey, prompts, response = '', model = "gpt-3.5-turbo", maxTokens = 2000, temperature = 0.5, frequencyPenalty = 0, presencePenalty = 0, topP = 1, stop = null) {
   return new Promise(async (resolve, reject) => {
-    const headers = {
-      'Content-Type': 'application/json'
-    };
 
+    const configuration = new Configuration({
+      apiKey: apiKey,
+    });
+    const openai = new OpenAIApi(configuration);
     const prompt = prompts.shift();
+
     const bodyData = {
-      prompt: `${response}${prompt}`,
+      model: model,
+      messages: [{ role: "user", content: `${response}${prompt}` }],
       max_tokens: maxTokens,
       temperature: temperature,
       frequency_penalty: frequencyPenalty,
@@ -17,23 +21,10 @@ let getModelResponse = function (url, apiKey, prompts, response = '', model = nu
       top_p: topP
     };
 
-    if (url.includes('azure.com')) {
-      headers['api-key'] = apiKey;
-      bodyData.stop = stop;
-    } else if (url.includes('openai.com')) {
-      headers['Authorization'] = `Bearer ${apiKey}`;
-      bodyData.model = model;
-    } else {
-      reject(new Error('Invalid URL.'));
-    }
-
-    const body = JSON.stringify(bodyData);
-
     try {
-      const resp = await axios.post(url, bodyData, { headers });
-
+      const resp = await openai.createChatCompletion(bodyData);
       if (resp.status === 200) {
-        const output = resp.data.choices[0].text.trim();
+        const output = resp.data.choices[0].message.trim();
         console.info(`Output: ${output}`);
         if (prompts.length > 0) {
           const respnext = await getModelResponse(url, apiKey, prompts, output, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);

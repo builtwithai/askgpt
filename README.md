@@ -1,7 +1,7 @@
 # AnyGPT
 
 <p align="center">
-  <a href="https://github.com/devops-testbed/multigpt/actions"><img alt="javscript-action status" src="https://github.com/devops-testbed/multigpt/workflows/units-test/badge.svg"></a>
+  <a href="https://github.com/devops-testbed/askgpt/actions"><img alt="javscript-action status" src="https://github.com/devops-testbed/askgpt/workflows/units-test/badge.svg"></a>
 </p>
 
 
@@ -64,7 +64,7 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-    - uses: devops-testbed/multigpt@v1
+    - uses: devops-testbed/askgpt@v1
       id: generate-response
       env:
         ENDPOINT: ${{ secrets.ENDPOINT }}
