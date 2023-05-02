@@ -8,6 +8,21 @@ let getModelResponse = function (url, apiKey, prompts, response = '', model = "g
     const configuration = new Configuration({
       apiKey: apiKey,
     });
+
+    if (url && url.includes('azure')) {
+      configuration.basePath = url;
+      configuration.api_version="2023-03-15-preview"
+      configuration.api_type="azure"
+      configuration.version="2023-03-15-preview"
+      configuration.baseOptions = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        }
+      };
+    }
+
     const openai = new OpenAIApi(configuration);
     const prompt = prompts.shift();
 
