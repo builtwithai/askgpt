@@ -22,11 +22,11 @@ let getModelResponse = function (url, apiKey, prompts, response = '', model = "g
     };
 
     try {
-      console.info(`Request: ${JSON.stringify(bodyData)}`);
+      //console.info(`Request: ${JSON.stringify(bodyData)}`);
       const resp = await openai.createChatCompletion(bodyData);
       if (resp.status === 200) {
         const output = resp.data.choices[0].message.content;
-        console.info(`Output: ${output}`);
+        //console.info(`Output: ${output}`);
         if (prompts.length > 0) {
           const respnext = await getModelResponse(url, apiKey, prompts, output, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
           resolve(`${respnext}`);

@@ -17861,11 +17861,11 @@ let getModelResponse = function (url, apiKey, prompts, response = '', model = "g
     };
 
     try {
-      console.info(`Request: ${JSON.stringify(bodyData)}`);
+      //console.info(`Request: ${JSON.stringify(bodyData)}`);
       const resp = await openai.createChatCompletion(bodyData);
       if (resp.status === 200) {
         const output = resp.data.choices[0].message.content;
-        console.info(`Output: ${output}`);
+        //console.info(`Output: ${output}`);
         if (prompts.length > 0) {
           const respnext = await getModelResponse(url, apiKey, prompts, output, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
           resolve(`${respnext}`);
@@ -18099,7 +18099,7 @@ async function run() {
       throw new Error("env.KEY API key is missing or empty.");
     }
     const prompts = JSON.parse(core.getInput('prompt'));
-    core.info(JSON.stringify(prompts));
+    core.debug(JSON.stringify(prompts));
     const model = core.getInput('model');
     const maxTokens = parseInt(core.getInput('max_tokens'), 10);;
     const frequencyPenalty = parseInt(core.getInput('frequency_penalty'), 10);
@@ -18107,7 +18107,7 @@ async function run() {
     const topP = parseInt(core.getInput('top_p'),10);
     const temperature = parseFloat(core.getInput('temperature'));
     const stop = core.getInput('stop');
-    core.info(`Inputs: prompt=${prompts}, model=${model}, maxTokens=${maxTokens}, frequencyPenalty=${frequencyPenalty}, presencePenalty=${presencePenalty}, topP=${topP}, temperature=${temperature}, stop=${stop}`);
+    core.debug(`Inputs: prompt=${prompts}, model=${model}, maxTokens=${maxTokens}, frequencyPenalty=${frequencyPenalty}, presencePenalty=${presencePenalty}, topP=${topP}, temperature=${temperature}, stop=${stop}`);
     const response = await getModelResponse(url, apiKey, prompts['prompt'],null, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response);
@@ -18117,7 +18117,6 @@ async function run() {
 }
 
 run();
-
 })();
 
 module.exports = __webpack_exports__;
