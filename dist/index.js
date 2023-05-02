@@ -17861,6 +17861,7 @@ let getModelResponse = function (url, apiKey, prompts, response = '', model = "g
     };
 
     try {
+      console.info(`Request: ${JSON.stringify(bodyData)}`);
       const resp = await openai.createChatCompletion(bodyData);
       if (resp.status === 200) {
         const output = resp.data.choices[0].message.content;
