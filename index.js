@@ -6,10 +6,6 @@ async function run() {
   try {
     const url = process.env.ENDPOINT;
     const apiKey = process.env.KEY;
-    if (!url || url.trim() === "") {
-      throw new Error("env.Endpoint URL is missing or empty.");
-    }
-
     if (!apiKey || apiKey.trim() === "") {
       throw new Error("env.KEY API key is missing or empty.");
     }
