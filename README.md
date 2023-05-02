@@ -1,4 +1,4 @@
-# AnyGPT
+# AskGPT
 
 <p align="center">
   <a href="https://github.com/devops-testbed/askgpt/actions"><img alt="javscript-action status" src="https://github.com/devops-testbed/askgpt/workflows/units-test/badge.svg"></a>
@@ -67,7 +67,6 @@ You can now consume the action by referencing the v1 branch
     - uses: devops-testbed/askgpt@v1
       id: generate-response
       env:
-        ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
       with:
         prompt: '{"prompt": ["what are the important things in life", "rank in order of difficulty.", "pick top 3"]}'
@@ -75,11 +74,9 @@ You can now consume the action by referencing the v1 branch
 ```
 
 anygpt
-This action completes a prompt using the model API.
+This action provides a completion for a given prompt using the model API.
 
-Inputs
-endpoint
-Required The endpoint URL for the model API.
+Required Inputs
 
 api_key
 Required The API key for the model API
