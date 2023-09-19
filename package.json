@@ -29,7 +29,7 @@
     "@actions/github": "^5.1.1",
     "dotenv": "^16.0.3",
     "github": "github:actions/github",
-    "openai": "^3.2.1"
+    "openai": "^4.8.0"
   },
   "devDependencies": {
     "@vercel/ncc": "latest",
