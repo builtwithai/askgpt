@@ -13,7 +13,7 @@ async function run() {
     const model = core.getInput('model');
     const options = core.getInput('options');
     core.debug(`Inputs: prompt=${prompts}, model=${model}, options=${options}`);
-    const response = await getModelResponse(url, apiKey, prompts['prompt'], model, options);
+    const response = await getModelResponse(url, apiKey, model, prompts['prompt'], options);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response);
   } catch (error) {
