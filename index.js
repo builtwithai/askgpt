@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
 const getModelResponse = require('./response');
 
 async function run() {
@@ -12,14 +11,9 @@ async function run() {
     const prompts = JSON.parse(core.getInput('prompt'));
     core.debug(JSON.stringify(prompts));
     const model = core.getInput('model');
-    const maxTokens = parseInt(core.getInput('max_tokens'), 10);;
-    const frequencyPenalty = parseInt(core.getInput('frequency_penalty'), 10);
-    const presencePenalty = parseInt(core.getInput('presence_penalty'),10);
-    const topP = parseInt(core.getInput('top_p'),10);
-    const temperature = parseFloat(core.getInput('temperature'));
-    const stop = core.getInput('stop');
-    core.debug(`Inputs: prompt=${prompts}, model=${model}, maxTokens=${maxTokens}, frequencyPenalty=${frequencyPenalty}, presencePenalty=${presencePenalty}, topP=${topP}, temperature=${temperature}, stop=${stop}`);
-    const response = await getModelResponse(url, apiKey, prompts['prompt'],null, model, maxTokens, temperature, frequencyPenalty, presencePenalty, topP, stop);
+    const options = core.getInput('options');
+    core.debug(`Inputs: prompt=${prompts}, model=${model}, options=${options}`);
+    const response = await getModelResponse(url, apiKey, prompts['prompt'], model, options);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response);
   } catch (error) {
