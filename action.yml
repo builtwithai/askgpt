@@ -8,7 +8,7 @@ inputs:
   model:
     description: 'model'
     required: false
-    default: 'gpt-3.5-turbo'
+    default: 'gpt-4'
   prompt:
     description: 'Prompt to send to the model'
     required: true
@@ -44,5 +44,5 @@ outputs:
   response:
     description: 'response'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
