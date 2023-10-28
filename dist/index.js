@@ -2926,9 +2926,9 @@ async function run() {
     const prompts = JSON.parse(core.getInput('prompt'));
     core.debug(JSON.stringify(prompts));
     const model = core.getInput('model');
-    const options = core.getInput('options');
+    const opt = core.getInput('options');
     //add model to options
-    options['model'] = model;
+    const options = { "model": model };
     core.debug(`Inputs: prompt=${prompts}, options=${options}`);
     const response = await getModelResponse(url, apiKey, prompts['prompt'], options);
     core.debug(JSON.stringify(response));
