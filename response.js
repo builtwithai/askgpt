@@ -1,7 +1,7 @@
 
 const AskLLM = require('AskLLM');
 
-async function getModelResponse(url, apiKey, model, prompts, options) {
+async function getModelResponse(url, apiKey, prompts, options) {
   const llm = new AskLLM(url, apiKey, options);
   let response = "";
   const messages = [];

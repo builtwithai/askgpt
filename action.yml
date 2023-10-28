@@ -12,34 +12,10 @@ inputs:
   prompt:
     description: 'Prompt to send to the model'
     required: true
-  max_tokens:
-    description: 'Maximum number of tokens to generate'
+  options:
+    description: 'options'
     required: false
-    default: 200
-  temperature:
-    description: 'Temperature'
-    required: false
-    default: 0.6
-  top_p:
-    description: 'Top p'
-    required: false
-    default: 1
-  frequency_penalty:
-    description: 'Frequency penalty'
-    required: false
-    default: 0
-  presence_penalty:
-    description: 'Presence penalty'
-    required: false
-    default: 0
-  stop:
-    description: 'Stop sequence'
-    required: false
-    default: '\n'
-  n:
-    description: 'Number of samples to return'
-    required: false
-    default: 1
+    default: '{}'
 outputs:
   response:
     description: 'response'
