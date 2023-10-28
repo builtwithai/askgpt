@@ -2759,7 +2759,7 @@ exports["default"] = _default;
 
 const AskLLM = __nccwpck_require__(609);
 
-async function getModelResponse(url, apiKey, model, prompts, options) {
+async function getModelResponse(url, apiKey, prompts, options) {
   const llm = new AskLLM(url, apiKey, options);
   let response = "";
   const messages = [];
@@ -2927,8 +2927,10 @@ async function run() {
     core.debug(JSON.stringify(prompts));
     const model = core.getInput('model');
     const options = core.getInput('options');
-    core.debug(`Inputs: prompt=${prompts}, model=${model}, options=${options}`);
-    const response = await getModelResponse(url, apiKey, model, prompts['prompt'], options);
+    //add model to options
+    options['model'] = model;
+    core.debug(`Inputs: prompt=${prompts}, options=${options}`);
+    const response = await getModelResponse(url, apiKey, prompts['prompt'], options);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response);
   } catch (error) {
