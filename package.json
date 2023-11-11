@@ -31,7 +31,7 @@
     "askllm": "^1.1.0",
     "dotenv": "^16.0.3",
     "github": "github:actions/github",
-    "openai": "^3.2.1"
+    "openai": "^4.17.4"
   },
   "devDependencies": {
     "@vercel/ncc": "latest",
