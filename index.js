@@ -8,9 +8,12 @@ async function run() {
     if (!apiKey || apiKey.trim() === "") {
       throw new Error("env.KEY API key is missing or empty.");
     }
+    const model = process.env.MODEL;
+    if (!model || model.trim() === "") {
+      throw new Error("env.MODEL model is missing or empty.");
+    }
     const prompts = JSON.parse(core.getInput('prompt'));
     core.debug(JSON.stringify(prompts));
-    const model = core.getInput('model');
     const opt = core.getInput('options');
     //add model to options
     const options = { "model": model };
