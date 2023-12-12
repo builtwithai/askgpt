@@ -64,7 +64,7 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-    - uses: devops-testbed/askgpt@v1
+    - uses: builtwithai/askgpt@main
       id: generate-response
       env:
         KEY: ${{ secrets.KEY }}
