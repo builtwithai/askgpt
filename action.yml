@@ -5,10 +5,6 @@ branding:
   icon: 'life-buoy'
   color: 'grey-dark'
 inputs:
-  model:
-    description: 'model'
-    required: false
-    default: "gpt-4"
   prompt:
     description: 'Prompt to send to the model'
     required: true
