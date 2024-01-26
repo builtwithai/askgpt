@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "latest",
     "@actions/github": "^5.1.1",
-    "@azure/openai": "^1.0.0-beta.5",
+    "@azure/openai": "^1.0.0-beta.11",
     "askllm": "^1.1.0",
     "dotenv": "^16.0.3",
     "github": "github:actions/github",
