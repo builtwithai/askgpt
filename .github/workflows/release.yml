@@ -1,7 +1,12 @@
+name: release
+
 on: 
   release: 
     types: [published, created]
 
-  - uses: actions/package-action@1.0.1
-    with:
-      path: 'action.yml dist/'
+jobs:
+  release:
+    name: package
+      uses: actions/package-action@1.0.1
+      with:
+        path: 'action.yml dist/'
