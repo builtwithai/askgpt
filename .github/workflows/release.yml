@@ -1,0 +1,6 @@
+on: 
+  release: 
+
+  - uses: actions/package-action@1.0.1
+    with:
+      path: 'action.yml dist/'
