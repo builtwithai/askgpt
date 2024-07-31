@@ -7,6 +7,6 @@ on:
 jobs:
   release:
     name: package
-      uses: actions/package-action@1.0.1
+      uses: actions-on-packages/package-action@0.4.1
       with:
         path: 'action.yml dist/'
