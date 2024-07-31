@@ -6,7 +6,10 @@ on:
 
 jobs:
   release:
-    name: package
-    uses: actions-on-packages/package-action@0.4.1
-    with:
-      path: 'action.yml dist/'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: package
+        uses: actions-on-packages/package-action@0.4.1
+        with:
+          path: 'action.yml dist/'
