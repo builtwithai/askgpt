@@ -68,6 +68,7 @@ You can now consume the action by referencing the v1 branch
       id: generate-response
       env:
         KEY: ${{ secrets.KEY }}
+        ENDPOINT: ${{ secrets.ENDPOINT }}
       with:
         prompt: '{"prompt": ["what are the important things in life", "rank in order of difficulty.", "pick top 3"]}'
     - run: echo ${{ steps.generate-response.outputs.response }}
@@ -78,11 +79,17 @@ This action provides a completion for a given prompt using the model API.
 
 Required Inputs
 
-api_key
+KEY
 Required The API key for the model API
+
+ENDPOINT
+Required The URL for the model API EndPoint
+
+MODEL
+Model Name
 
 prompt
 Required The prompt to complete.
 
 
-See the [actions tab](https://github.com/devops-testbed/anygpt/actions) for runs of this action! :rocket:
+See the [actions tab](https://github.com/builtwithai/askgpt/actions) for runs of this action! :rocket:
