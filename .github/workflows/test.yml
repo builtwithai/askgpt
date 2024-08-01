@@ -17,6 +17,7 @@ jobs:
       env:
         ENDPOINT: ${{ secrets.ENDPOINT }}
         KEY: ${{ secrets.KEY }}
+        MODEL: ${{ secrets.MODEL }}
       with:
         prompt: '{"prompt": ["what are the important things in life", "rank in order of difficulty.", "pick top 3 and write it as a mardown list."]}'
         max_tokens: 10
