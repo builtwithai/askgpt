@@ -8,7 +8,7 @@ describe('getModelResponse', () => {
     const url = process.env.ENDPOINT;
     const apiKey = process.env.KEY;
     const prompts = ["what are the important things in life?", ": rank in order of difficulty.", ": pick top 3"];
-    const model = "llm-large";
+    const model = "gpt-4o";
     const options = { "model": model }
     const response = await getModelResponse(url, apiKey, prompts, options);
     console.debug(response);
