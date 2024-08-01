@@ -1,4 +1,4 @@
-name: "units-test"
+name: "unit-tests"
 on:
   workflow_dispatch:
   pull_request:
@@ -20,7 +20,6 @@ jobs:
         MODEL: ${{ secrets.MODEL }}
       with:
         prompt: '{"prompt": ["what are the important things in life", "rank in order of difficulty.", "pick top 3 and write it as a mardown list."]}'
-        max_tokens: 10
     -  env:
         RESPONSE: ${{ steps.multi-prompt.outputs.response }}
        run: echo ${{ env.RESPONSE }} || echo 0
