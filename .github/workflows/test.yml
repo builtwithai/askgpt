@@ -22,7 +22,7 @@ jobs:
         prompt: '{"prompt": ["what are the important things in life", "rank in order of difficulty.", "pick top 3 and write it as a mardown list."]}'
     -  env:
         RESPONSE: ${{ steps.multi-prompt.outputs.response }}
-       run: echo ${{ env.RESPONSE }} 
+       run: echo ok
        
   units:
     runs-on: ubuntu-latest

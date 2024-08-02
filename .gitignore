@@ -5,6 +5,7 @@ node_modules/
 .idea/
 *.iml
 .env*
+*.env
 
 # Logs
 logs
