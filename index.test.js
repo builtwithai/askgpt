@@ -1,4 +1,6 @@
 const getModelResponse = require('./response');
+const dotenv = require('dotenv');
+dotenv.config();
 
 describe('getModelResponse', () => {
   test('returns a response from the model API', async () => {
