@@ -29,7 +29,7 @@
     "@actions/github": "^5.1.1",
     "@azure/openai": "^1.0.0-beta.5",
     "askllm": "^1.1.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.4.5",
     "github": "github:actions/github",
     "openai": "^3.2.1"
   },
