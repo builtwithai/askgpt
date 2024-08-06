@@ -2756,18 +2756,31 @@ exports["default"] = _default;
 /***/ 781:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-
+const core = __nccwpck_require__(186);
 const AskLLM = __nccwpck_require__(609);
 
-async function getModelResponse(url, apiKey, prompts, options) {
+const SYSTEM_PROMPT = `
+Answer based on the given information only.
+Respond in pretty markdown format and use relevant emojis to express yourself.
+`;
+
+async function getModelResponse(prompts, options = {}) {
+  const url = process.env.ENDPOINT || "https://models.inference.ai.azure.com/chat/completions";
+  const apiKey = process.env.KEY || core.getInput('token');
+  const model = process.env.MODEL || "gpt-4o";
+  options.model = model;
+  
   const llm = new AskLLM(url, apiKey, options);
   let response = "";
   const messages = [];
 
+  const system = process.env.SYSTEM || SYSTEM_PROMPT;
+  messages.push({ role: "system", content: system });
+
   for (const prompt of prompts) {
     messages.push({ role: "user", content: `${prompt}` });
     if (response !== "") {
-      messages.push({ role: "system", content: response });
+      messages.push({ role: "user", content: response });
     }
     try {
       const completion = await llm.getCompletion(messages, options);
@@ -2780,7 +2793,6 @@ async function getModelResponse(url, apiKey, prompts, options) {
 }
 
 module.exports = getModelResponse;
-
 
 /***/ }),
 
@@ -2918,22 +2930,12 @@ const getModelResponse = __nccwpck_require__(781);
 
 async function run() {
   try {
-    const url = process.env.ENDPOINT;
-    const apiKey = process.env.KEY;
-    if (!apiKey || apiKey.trim() === "") {
-      throw new Error("env.KEY API key is missing or empty.");
-    }
-    const model = process.env.MODEL;
-    if (!model || model.trim() === "") {
-      throw new Error("env.MODEL model is missing or empty.");
-    }
+
     const prompts = JSON.parse(core.getInput('prompt'));
     core.debug(JSON.stringify(prompts));
-    const opt = core.getInput('options');
-    //add model to options
-    const options = { "model": model };
+    const options = JSON.parse(core.getInput('options'));
     core.debug(`Inputs: prompt=${prompts}, options=${options}`);
-    const response = await getModelResponse(url, apiKey, prompts['prompt'], options);
+    const response = await getModelResponse(prompts['prompt'], options);
     core.debug(JSON.stringify(response));
     core.setOutput('response', response);
   } catch (error) {

@@ -5,6 +5,9 @@ branding:
   icon: 'life-buoy'
   color: 'grey-dark'
 inputs:
+  token:
+    description: 'GITHUB_TOKEN or a PAT.'
+    default: ${{ github.token }}
   prompt:
     description: 'Prompt to send to the model'
     required: true
