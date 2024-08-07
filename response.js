@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const AskLLM = require('AskLLM');
+const AskLLM = require('askllm');
 
 const SYSTEM_PROMPT = `
 Answer based on the given information only.
