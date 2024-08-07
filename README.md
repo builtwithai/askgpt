@@ -1,8 +1,7 @@
 # AskGPT
 
-<p align="center">
-  <a href="https://github.com/devops-testbed/askgpt/actions"><img alt="javscript-action status" src="https://github.com/devops-testbed/askgpt/workflows/units-test/badge.svg"></a>
-</p>
+[![unit-tests](https://github.com/builtwithai/askgpt/actions/workflows/test.yml/badge.svg)](https://github.com/builtwithai/askgpt/actions/workflows/test.yml)
+
 
 
 ## Code in Main
