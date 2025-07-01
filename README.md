@@ -1,5 +1,10 @@
 # AskGPT
 
+
+This has been now deprecated in favour of the official
+
+https://github.com/actions/ai-inference
+
 [![unit-tests](https://github.com/builtwithai/askgpt/actions/workflows/test.yml/badge.svg)](https://github.com/builtwithai/askgpt/actions/workflows/test.yml)
 
 
